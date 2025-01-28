@@ -1,0 +1,73 @@
+# Archivos de configuración local
+.env
+.env.local
+.env.*.local
+
+# Archivos de base de datos
+*.sqlite3
+*.db
+*.sql
+
+# Entornos virtuales
+venv/
+env/
+*.venv/
+.vscode/
+.idea/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.mo
+*.db
+*.sqlite3
+
+# Archivos de cobertura
+.coverage
+htmlcov/
+
+# Archivos de distribución / compilación
+dist/
+build/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Archivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Node.js (si usas Node.js en tu proyecto)
+node_modules/
+npm-debug.log*
+
+# Archivos de Bower (si usas Bower en tu proyecto)
+bower_components/
+
+# Archivos de Sass (si usas Sass en tu proyecto)
+.sass-cache/
+
+# Archivos de Celery (si usas Celery en tu proyecto)
+celerybeat-schedule
+celerybeat.pid
+
+# Archivos de PyCharm
+.idea/
+*.iml
+
+# Archivos de Visual Studio Code
+.vscode/
