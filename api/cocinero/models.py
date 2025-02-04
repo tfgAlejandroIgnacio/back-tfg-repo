@@ -15,5 +15,4 @@ class Cocinero(models.Model):
     contraseña = models.CharField(max_length=200)
 
     class Meta:
-        managed = False
         db_table = 'cocinero'

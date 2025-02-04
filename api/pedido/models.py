@@ -13,5 +13,4 @@ class Pedido(models.Model):
     id_cocinero = models.ForeignKey('cocinero.Cocinero', models.DO_NOTHING, db_column='id_cocinero')
 
     class Meta:
-        managed = False
         db_table = 'pedido'

@@ -12,5 +12,4 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=200)
 
     class Meta:
-        managed = False
         db_table = 'categoria'

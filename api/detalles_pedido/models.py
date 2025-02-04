@@ -16,5 +16,4 @@ class DetallesPedido(models.Model):
     fecha_entrega = models.DateField()
 
     class Meta:
-        managed = False
         db_table = 'detalles_pedido'

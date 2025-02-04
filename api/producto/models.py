@@ -14,5 +14,4 @@ class Producto(models.Model):
     id_categoria = models.ForeignKey('categoria.Categoria', models.DO_NOTHING, db_column='id_categoria')
 
     class Meta:
-        managed = False
         db_table = 'producto'
