@@ -6,7 +6,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from .serializer import ProductoSerializer, ProductoSerializerConCategoria
 from .models import Producto
 
-# Create your views here.
 class ProductoSimple(APIView):
     def get(self, request):
         productos = Producto.objects.all()
