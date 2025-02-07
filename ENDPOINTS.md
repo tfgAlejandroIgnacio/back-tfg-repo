@@ -1,39 +1,151 @@
-Funcionamiento de los endpoints de la api:
 
-Primero debes tener iniciado el servidor de python con la api, si no lo has echo mira primero el README.md principal.
+# 🚀 Funcionamiento de los Endpoints de la API
 
-Una vez tengas el servidor iniciado utiliza la url: http://127.0.0.1:8000/ (en el caso de que no hayamos cambiado el puerto por defecto)
+## 📌 Requisitos Previos
 
-Esta api tiene las siguientes aplicaciones: 
+Primero debes tener iniciado el servidor de **Python** con la API.  
+Si no lo has hecho, revisa primero el archivo **README.md** principal.
 
- - categoria
-    Los campos de categoria son: id y nombre
+---
 
-    Puedes utilizar un crud completo con la siguiente información:
+## 🌐 URL Base del Servidor
 
-    Para realizar un get de todas las categorias utilizaremos la ruta http://127.0.0.1:8000/categoria y utilizamos el 
-    método http get, este endpoint te devolverá un array con todos los campos y una respuesta 302_FOUND
+```
+http://127.0.0.1:8000/
+```
 
-    Para realizar un get por id necesitas utilizar la url de antes además de /<id> escribiendo en <id> el id de la categoria que deseas,
-    además utilizaremos el método get como antes.
-    En este caso te peude devolver 2 respuestas un 404_NOT_FOUND en el caso de no encontrar la categoria y un 302_FOUND en el caso de que
-    se encuentre además del json con los campos
+> **Nota:** Esta es la URL por defecto. Si has cambiado el puerto, ajusta la URL correspondiente.
 
-    Para realizar un POST(creación) de una categoria basta con utilizar la ruta http://127.0.0.1:8000/categoria y el método POST.
-    En este caso te devolverá un 201_CREATED en caso de que se guarde correctamente, en el caso de que no se cree te enviará un 400_BAD_REQUEST
+---
 
-    CUIDADO
-    En el caos de que hagas el POST es encesario enviar en formato JSON el contenido para poder crear la categoria, aqui tienes un ejemplo modelo:
+## 🛠️ Aplicaciones de la API
 
-    {
-        "nombre":"Frutas"
-    }
+### 1. **📂 Categoría**
 
-    En el caso de que quieras eliminar una categoria utiliza http://127.0.0.1:8000/categoria/<id> con el método DELETE, en este caso también es 
-    necesario especificar el id en <id>, este método te devolverá 202_ACCEPTED en caso de que se elimine y 404_NOT_FOUND en el caso de que 
-    no se encuentre la categoria que has puesto
+Los campos de **categoría** son:
 
-    El método PUT(actualisación) no está implementado en categoria
+- `id`
+- `nombre`
 
-    
+#### 🔄 Operaciones CRUD:
 
+- **GET todas las categorías**  
+  **URL:** `http://127.0.0.1:8000/categoria`  
+  **Método:** `GET`  
+  **Respuesta:** Devuelve un array con todas las categorías.  
+  **Código de Respuesta:** `302_FOUND`
+
+---
+
+- **GET categoría por ID**  
+  **URL:** `http://127.0.0.1:8000/categoria/<id>`  
+  **Método:** `GET`  
+  **Respuestas Posibles:**  
+  - `404_NOT_FOUND` si la categoría no existe  
+  - `302_FOUND` con el JSON de la categoría si se encuentra
+
+---
+
+- **POST (Crear nueva categoría)**  
+  **URL:** `http://127.0.0.1:8000/categoria`  
+  **Método:** `POST`  
+  **Respuesta:**  
+  - `201_CREATED` si se crea correctamente  
+  - `400_BAD_REQUEST` si hay un error en la solicitud  
+
+  **Ejemplo de JSON para crear una categoría:**
+  ```json
+  {
+      "nombre": "Frutas"
+  }
+  ```
+
+> ⚠️ **Importante:** Asegúrate de enviar el contenido en formato **JSON**.
+
+---
+
+- **DELETE (Eliminar categoría)**  
+  **URL:** `http://127.0.0.1:8000/categoria/<id>`  
+  **Método:** `DELETE`  
+  **Respuestas Posibles:**  
+  - `202_ACCEPTED` si la categoría se elimina correctamente  
+  - `404_NOT_FOUND` si la categoría no existe  
+
+---
+
+> ❌ **Nota:** El método **PUT (actualización)** no está implementado para categorías.
+
+---
+
+### 2. **📦 Producto**
+
+Los campos de **producto** son:
+
+- `id`
+- `nombre`
+- `stock`
+- `categoria`
+
+> **Nota:**  
+> - En **GET**, el campo `categoria` mostrará todos sus atributos.  
+> - En **POST/PUT**, solo necesitas especificar el `id_categoria`.
+
+---
+
+#### 🔄 Operaciones CRUD:
+
+- **GET todos los productos**  
+  **URL:** `http://127.0.0.1:8000/producto`  
+  **Método:** `GET`  
+  **Respuesta:** Devuelve un array con todos los productos.
+
+---
+
+- **GET producto por ID**  
+  **URL:** `http://127.0.0.1:8000/producto/<id>`  
+  **Método:** `GET`  
+  **Respuesta:** Devuelve el producto específico.
+
+---
+
+- **POST (Crear nuevo producto)**  
+  **URL:** `http://127.0.0.1:8000/producto`  
+  **Método:** `POST`  
+  **Ejemplo de JSON:**
+  ```json
+  {
+      "nombre": "manzana",
+      "stock": 200,
+      "id_categoria": 1
+  }
+  ```
+
+---
+
+- **DELETE (Eliminar producto)**  
+  **URL:** `http://127.0.0.1:8000/producto/<id>`  
+  **Método:** `DELETE`  
+  **Respuestas Posibles:**  
+  - `200_OK` si el producto se elimina correctamente  
+  - `404_NOT_FOUND` si el producto no existe  
+
+---
+
+- **PUT (Actualizar producto)**  
+  **URL:** `http://127.0.0.1:8000/producto/<id>`  
+  **Método:** `PUT`  
+  **Ejemplo de JSON:**
+  ```json
+  {
+      "nombre": "Manzana",
+      "stock": 100,
+      "id_categoria": 2
+  }
+  ```
+
+  **Respuestas Posibles:**  
+  - `200_OK` si la modificación fue exitosa  
+  - `304_NOT_MODIFIED` si ocurrió un error  
+  - `404_NOT_FOUND` si el producto no existe  
+
+---
