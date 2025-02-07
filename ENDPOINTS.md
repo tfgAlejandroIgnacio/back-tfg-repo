@@ -22,11 +22,18 @@ Esta api tiene las siguientes aplicaciones:
     Para realizar un POST(creación) de una categoria basta con utilizar la ruta http://127.0.0.1:8000/categoria y el método POST.
     En este caso te devolverá un 201_CREATED en caso de que se guarde correctamente, en el caso de que no se cree te enviará un 400_BAD_REQUEST
 
+    CUIDADO
+    En el caos de que hagas el POST es encesario enviar en formato JSON el contenido para poder crear la categoria, aqui tienes un ejemplo modelo:
+
+    {
+        "nombre":"Frutas"
+    }
+
     En el caso de que quieras eliminar una categoria utiliza http://127.0.0.1:8000/categoria/<id> con el método DELETE, en este caso también es 
     necesario especificar el id en <id>, este método te devolverá 202_ACCEPTED en caso de que se elimine y 404_NOT_FOUND en el caso de que 
     no se encuentre la categoria que has puesto
 
-
+    El método PUT(actualisación) no está implementado en categoria
 
     
 
