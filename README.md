@@ -6,7 +6,7 @@
 ### ✅ Requisitos previos:
 Necesitas tener lo siguiente:
 - 📂 **Repositorio de GitHub clonado**
-- 🛢️ **Base de datos MySQL llamada `main`**
+- 🛢️ **Base de datos MySQL llamada `main` (se recomienda usar docker con el archivo docker-compose.yml del repo)**
 
 ---
 
