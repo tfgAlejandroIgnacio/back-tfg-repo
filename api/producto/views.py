@@ -32,7 +32,7 @@ class ProductoConId(APIView):
         
         try:
             producto = Producto.objects.get(pk=id)
-            productoAModificar = ProductoSerializer(producto, many=False)
+            productoAModificar = ProductoSerializer(producto, data=request.data)
 
             if productoAModificar.is_valid():
                 productoAModificar.save()
@@ -40,7 +40,7 @@ class ProductoConId(APIView):
             else:
                 return Response("El producto no pudo ser modificado", status=status.HTTP_304_NOT_MODIFIED)
         except:
-            return Response("No se encontró el producto solicitado", status=status.HTTP_404_NOT_FOUND)
+            return Response("No se encontró el producto solicitado.", status=status.HTTP_404_NOT_FOUND)
         
     def delete(self, request, id ):
         try:
