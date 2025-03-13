@@ -10,7 +10,7 @@ class ProductoSimple(APIView):
     def get(self, request):
         productos = Producto.objects.all()
         listaProductos = ProductoSerializerConCategoria(productos, many=True)
-        return Response(listaProductos.data, status=status.HTTP_302_FOUND)
+        return Response(listaProductos.data, status=status.HTTP_200_OK)
     def post(self, request):
         datos = ProductoSerializer(data=request.data)
         if datos.is_valid():
@@ -24,7 +24,7 @@ class ProductoConId(APIView):
         try:
             producto = Producto.objects.get(pk=id)
             productoSerializado = ProductoSerializerConCategoria(producto)
-            return Response(productoSerializado.data, status=status.HTTP_302_FOUND)
+            return Response(productoSerializado.data, status=status.HTTP_200_OK)
         except:
             return Response("No se encontró el producto solicitado", status=status.HTTP_404_NOT_FOUND)
                 
@@ -38,7 +38,7 @@ class ProductoConId(APIView):
                 productoAModificar.save()
                 return Response("Producto modificado correctamente", status=status.HTTP_200_OK)
             else:
-                return Response("El producto no pudo ser modificado", status=status.HTTP_304_NOT_MODIFIED)
+                return Response("El producto no pudo ser modificado", status=status.HTTP_400_BAD_REQUEST)
         except:
             return Response("No se encontró el producto solicitado.", status=status.HTTP_404_NOT_FOUND)
         

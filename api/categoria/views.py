@@ -10,7 +10,7 @@ class CategoriaSimple(APIView):
     def get(self, request):
         categorias = Categoria.objects.all()
         categoriasSerializadas = CategoriaSerializer(categorias, many=True)
-        return Response(categoriasSerializadas.data, status=status.HTTP_302_FOUND)
+        return Response(categoriasSerializadas.data, status=status.HTTP_200_OK)
     
     def post(self, request):
         datos_categoria = CategoriaSerializer(data=request.data)
@@ -26,12 +26,12 @@ class CategoriaConId(APIView):
         except ObjectDoesNotExist:
             return Response("Categoria no encontrada",status=status.HTTP_404_NOT_FOUND)
         categoriaSerializer = CategoriaSerializer(categoria)    
-        return Response(categoriaSerializer.data, status=status.HTTP_302_FOUND)
+        return Response(categoriaSerializer.data, status=status.HTTP_200_OK)
     
     def delete(self, request, id):
         try:
             categoria = Categoria.objects.get(pk=id)
             categoria.delete()
-            return Response(status=status.HTTP_202_ACCEPTED)
+            return Response(status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
             return Response("Categoria no encontrada",status=status.HTTP_404_NOT_FOUND) 
